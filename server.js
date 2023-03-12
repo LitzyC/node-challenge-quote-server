@@ -37,6 +37,21 @@ app.get("/two", function (request, response) {
   response.send("You asked for route /two");
 });
 
+app.get("/quotes/search", function (request, response) {
+  const searchQuotes= request.query.term.toLowerCase();
+  if (!searchQuotes){
+    response.send("Falta el parametro")
+  }
+  
+  const quoteFilter=quotes.filter(quote =>{
+    const quotePhrase= quote.quote;
+    const quoteAuthor= quote.author;
+    console.log(quotePhrase);
+    return quotePhrase.includes(searchQuotes) || quoteAuthor.includes(searchQuotes);
+  })
+  response.send(quoteFilter);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
