@@ -19,6 +19,24 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  const random=pickFromArray(quotes);
+  response.send(random);
+});
+
+app.get("/one", function (request, response) {
+  response.send("You asked for route /one");
+});
+
+app.get("/two", function (request, response) {
+  response.send("You asked for route /two");
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
